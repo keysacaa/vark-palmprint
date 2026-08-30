@@ -1,0 +1,97 @@
+# ============================================================
+# Python — Backend
+# ============================================================
+
+# Virtual environment
+Backend/venv/
+Backend/.venv/
+venv/
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# pytest / hypothesis caches
+.pytest_cache/
+.hypothesis/
+Backend/.pytest_cache/
+Backend/.hypothesis/
+
+# Temporary upload files (runtime only — .gitkeep keeps the folder)
+Backend/uploads/*
+!Backend/uploads/.gitkeep
+
+# Test images generated at runtime
+Backend/test_images/
+
+# Python egg / dist / build
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ============================================================
+# Node / Frontend
+# ============================================================
+
+# Dependencies
+Frontend/node_modules/
+node_modules/
+
+# Build output
+Frontend/dist/
+dist/
+
+# Vite / TypeScript caches
+Frontend/.vite/
+*.tsbuildinfo
+
+# pnpm
+pnpm-debug.log*
+
+# npm / yarn logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================
+# OS / Editor
+# ============================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+
+# ============================================================
+# Misc
+# ============================================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+.coverage
+htmlcov/
