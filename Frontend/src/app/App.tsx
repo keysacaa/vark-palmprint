@@ -490,7 +490,7 @@ function UploadPage({
                     ))}
                   </div>
                   <p className="font-mono text-[10px] text-muted-foreground tracking-widest uppercase">
-                    Menunggu respons backend · API /predict
+                    Memproses citra · Mohon tunggu
                   </p>
                 </div>
               )}
@@ -610,7 +610,7 @@ function UploadPage({
                   </div>
                   <div className="text-center">
                     <p className="font-serif text-lg font-medium text-foreground mb-1">
-                      Gagal Memuat Gambar
+                      Gagal Memproses Citra
                     </p>
                     <p className="text-sm text-muted-foreground max-w-xs">
                       {errorMessage || "Terjadi kesalahan saat memproses gambar."}
@@ -737,8 +737,7 @@ function ResultPage({
             Hasil Klasifikasi
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Hasil klasifikasi akan ditampilkan setelah citra diproses oleh model
-            CNN melalui backend.
+            Hasil klasifikasi ditampilkan setelah citra telapak tangan diproses oleh model MobileNetV2 melalui backend.
           </p>
         </div>
 
@@ -811,7 +810,7 @@ function ResultPage({
               <div className="h-0.5 bg-primary" />
               <div className="px-6 py-4 border-b border-border">
                 <p className="font-mono text-[10px] font-medium tracking-[0.15em] uppercase text-primary">
-                  Keluaran Model CNN
+                  Keluaran Model MobileNetV2
                 </p>
               </div>
               <div className="divide-y divide-border">
@@ -922,29 +921,14 @@ function ResultPage({
             {/* API note */}
             <div className="bg-secondary/30 border border-border rounded-sm p-5">
               <p className="font-mono text-[10px] font-medium tracking-[0.15em] uppercase text-muted-foreground mb-2">
-                Catatan Prototype
+                Informasi Hasil Klasifikasi
               </p>
               <p className="text-[12px] text-muted-foreground leading-relaxed">
-                Halaman ini menampilkan struktur keluaran yang akan diisi
-                respons backend. Field{" "}
-                {[
-                  "predicted_class",
-                  "predicted_label",
-                  "confidence",
-                  "probabilities",
-                ].map((f, i, arr) => (
-                  <span key={f}>
-                    <code className="font-mono text-[11px] bg-muted border border-border px-1.5 py-px rounded-sm text-foreground">
-                      {f}
-                    </code>
-                    {i < arr.length - 1 ? ", " : " "}
-                  </span>
-                ))}
-                diterima dari model CNN melalui endpoint{" "}
-                <code className="font-mono text-[11px] bg-muted border border-border px-1.5 py-px rounded-sm text-primary">
-                  POST /api/predict
-                </code>
-                .
+                Hasil yang ditampilkan merupakan keluaran aktual model
+                MobileNetV2 berdasarkan citra telapak tangan yang diunggah.
+                Sistem menghasilkan prediksi kategori gaya belajar VARK,
+                tingkat confidence, serta distribusi probabilitas pada kategori
+                Visual, Auditory, Read/Write, dan Kinesthetic.
               </p>
             </div>
           </div>
@@ -1072,7 +1056,7 @@ export default function App() {
       setPredictionResult(data);
       setPage("result");
     } catch {
-      setErrorMessage("Gagal terhubung ke server. Pastikan backend berjalan.");
+      setErrorMessage("Gagal terhubung ke server. Pastikan backend berjalan dan coba lagi.");
       setUploadState("error");
     }
   };
