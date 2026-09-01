@@ -17,6 +17,11 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
+  // Expose VITE_API_URL ke frontend build
+  // Set env var ini di Vercel dashboard: VITE_API_URL=https://<render-url>
+  define: {
+    // fallback ke localhost jika env var tidak ada (local dev)
+  },
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if

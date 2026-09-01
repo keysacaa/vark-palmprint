@@ -1043,7 +1043,8 @@ export default function App() {
     try {
       const formData = new FormData();
       formData.append("file", selectedFile);
-      const res = await fetch("http://127.0.0.1:5000/api/predict", {
+      const API_URL = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:5000";
+      const res = await fetch(`${API_URL}/api/predict`, {
         method: "POST",
         body: formData,
       });

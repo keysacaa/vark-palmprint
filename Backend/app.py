@@ -37,9 +37,14 @@ app = Flask(__name__)
 # Batasi ukuran upload ke 10 MB (Requirement 5.3)
 app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
 
-# Konfigurasi CORS — hanya izinkan dari origin frontend dev server
+# Konfigurasi CORS — baca dari env var ALLOWED_ORIGINS (comma-separated).
+# Fallback ke localhost dev server jika env var tidak di-set.
 # (Requirement 5.1, 5.2)
-CORS(app, origins=["http://127.0.0.1:5173", "http://localhost:5173"])
+_raw_origins = os.environ.get(
+    "ALLOWED_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173"
+)
+_allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+CORS(app, origins=_allowed_origins)
 
 # ---------------------------------------------------------------------------
 # Folder uploads — dibuat otomatis jika belum ada

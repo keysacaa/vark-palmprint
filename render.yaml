@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: vark-palmprint-backend
+    runtime: python
+    rootDir: Backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ALLOWED_ORIGINS
+        sync: false   # isi manual di Render dashboard setelah Vercel URL diketahui
